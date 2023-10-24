@@ -8,5 +8,5 @@ files/
 
 __pycache__/
 
-/client_scecret.json
-/client_scecrets.json
+client_secret.json
+client_secrets.json
