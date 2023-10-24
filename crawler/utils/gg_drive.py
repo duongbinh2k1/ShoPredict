@@ -15,7 +15,7 @@ class GGDrive:
 
     def initialize(self):
         self.gauth = GoogleAuth()
-        self.credentials_file = 'client_secrets.json'
+        self.credentials_file = 'client_secret.json'
         self.drive = None
 
     def authenticate(self):
