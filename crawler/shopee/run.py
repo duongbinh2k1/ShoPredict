@@ -7,7 +7,6 @@ from datetime import datetime
 
 today = datetime.now().strftime('%Y-%m-%d')
 
-
 def crawl_man_clothes_shopee():
     with sync_playwright() as p:
         browser = BrowserManager(p)
@@ -20,9 +19,24 @@ def crawl_man_clothes_shopee():
         sp_page.go_to_man_clothes()
         products =  sp_page.get_all_product()
 
-        sp_page.list_to_df(products, f'./man_clothes_shopee_{today}.csv')
+        sp_page.list_to_df(products, f'./files/man_clothes_shopee_{today}.csv')
 
 
         browser.close_browser()
 
-crawl_man_clothes_shopee()
+def crawl_woman_clothes_shopee():
+    with sync_playwright() as p:
+        browser = BrowserManager(p)
+        browser.launch_browser()
+
+        page_manager = PageManager(browser)
+        page = page_manager.new_page()
+
+        sp_page = SPPage(page)
+        sp_page.go_to_woman_clothes()
+        products = sp_page.get_all_product()
+
+        sp_page.list_to_df(products, f'./files/woman_clothes_shopee_{today}.csv')
+
+
+        browser.close_browser()

@@ -85,6 +85,7 @@ class SPPage():
                     product['location'] = page_actions.get_text(childs[3])
                     
                     products.append(product)
+                print(f'Get all product on page {i}')
                 i = i + 1
                 next_page = page_actions.get_element_by_inner_text_from_element(shopee_page_controller, f'{i}')
                 page_actions.click_element(next_page)
