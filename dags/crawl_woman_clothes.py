@@ -13,10 +13,10 @@ default_args = {
     'retry_delay': timedelta(minutes=5),
 }
 
-dag = DAG('crawl_man_clothes', default_args=default_args)
+dag = DAG('crawl_woman_clothes', default_args=default_args)
 
 crawl_dag = BashOperator(
-    task_id='crawl_man_clothes_task',
+    task_id='crawl_woman_clothes_task',
     bash_command='python /opt/airflow/crawler/shopee/crawl_woman_clothes.py',
     dag=dag)
 

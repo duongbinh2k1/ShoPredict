@@ -1,4 +1,5 @@
-from crawler.shopee.run import crawl_man_clothes_shopee, crawl_woman_clothes_shopee
+from crawler.shopee.crawl_man_clothes import crawl_man_clothes_shopee
+from crawler.shopee.crawl_woman_clothes import crawl_woman_clothes_shopee
 
-crawl_woman_clothes_shopee()
 crawl_man_clothes_shopee()
+crawl_woman_clothes_shopee()

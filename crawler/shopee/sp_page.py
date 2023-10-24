@@ -2,7 +2,7 @@ from crawler.base.page_manager import PageManager
 from crawler.constants import *
 from crawler.utils import page_actions
 import time
-
+import pandas as pd
 
 class SPPage():
 
@@ -13,6 +13,7 @@ class SPPage():
         self.page.goto(SHOPEE_HOME_URL)
         time.sleep(1)
         page_actions.close_popup(self.page)
+        return self.page
 
     def go_to_woman_clothes(self):
         try:
@@ -23,6 +24,7 @@ class SPPage():
             page_actions.click_element(element)
             time.sleep(1)
             print("Go to woman clothes success")
+            return self.page
 
         except Exception as e:
             if "intercepts pointer events" in str(e):
@@ -40,6 +42,7 @@ class SPPage():
             page_actions.click_element(element)
             time.sleep(1)
             print("Go to man clothes success")
+            return self.page
 
         except Exception as e:
             if "intercepts pointer events" in str(e):
@@ -86,7 +89,15 @@ class SPPage():
                 next_page = page_actions.get_element_by_inner_text_from_element(shopee_page_controller, f'{i}')
                 page_actions.click_element(next_page)
 
-                print(products)
+            return products
 
         except Exception as e:
             print(f"Error: {e}")
+
+    def list_to_df(self, list_data, output):
+        try:
+            df = pd.DataFrame(list_data)
+            df.to_csv(output, index=False)
+            return df
+        except Exception as e:
+            print(f"Error:{e}")
