@@ -96,8 +96,10 @@ class SPPage():
             print(f"Error: {e}")
 
     def list_to_df(self, list_data):
-        df = pd.DataFrame(list_data)
-        return df
+        if list:
+            df = pd.DataFrame(list_data)
+            return df
+        return None
 
     def df_to_csv(self, df, output):
         try:

@@ -27,11 +27,13 @@ def crawl_man_clothes_shopee():
         products =  sp_page.get_all_product()
 
         sp_df = sp_page.list_to_df(products)
-        sp_page.df_to_csv(sp_df, f'./files/woman_clothes_shopee_{today}.csv')
+        sp_page.df_to_csv(sp_df, f'./files/man_clothes_shopee_{today}.csv')
 
         gg_drive.upload_df(sp_df, f'man_clothes_shopee_{today}.csv')
 
         browser.close_browser()
+
+        return  f'man_clothes_shopee_{today}.csv'
 
 def crawl_woman_clothes_shopee():
     with sync_playwright() as p:
@@ -55,3 +57,5 @@ def crawl_woman_clothes_shopee():
         gg_drive.upload_df(sp_df, f'woman_clothes_shopee_{today}.csv')
 
         browser.close_browser()
+
+        return  f'woman_clothes_shopee_{today}.csv'

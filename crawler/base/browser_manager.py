@@ -7,7 +7,7 @@ class BrowserManager:
         self.browser: Browser = None
 
     def launch_browser(self):
-        self.browser = self.playwright.chromium.launch()
+        self.browser = self.playwright.chromium.launch(headless=False)
 
     def close_browser(self):
         if self.browser:
