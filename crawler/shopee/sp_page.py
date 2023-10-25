@@ -95,9 +95,12 @@ class SPPage():
         except Exception as e:
             print(f"Error: {e}")
 
-    def list_to_df(self, list_data, output):
+    def list_to_df(self, list_data):
+        df = pd.DataFrame(list_data)
+        return df
+
+    def df_to_csv(self, df, output):
         try:
-            df = pd.DataFrame(list_data)
             df.to_csv(output, index=False)
             return df
         except Exception as e:

@@ -26,9 +26,10 @@ def crawl_man_clothes_shopee():
         time.sleep(1)
         products =  sp_page.get_all_product()
 
-        sp_df = sp_page.list_to_df(products, f'./files/man_clothes_shopee_{today}.csv')
+        sp_df = sp_page.list_to_df(products)
+        sp_page.df_to_csv(sp_df, f'./files/woman_clothes_shopee_{today}.csv')
 
-        gg_drive.upload_csv(sp_df, f'man_clothes_shopee_{today}.csv')
+        gg_drive.upload_df(sp_df, f'man_clothes_shopee_{today}.csv')
 
         browser.close_browser()
 
@@ -48,8 +49,9 @@ def crawl_woman_clothes_shopee():
         sp_page.go_to_woman_clothes()
         products = sp_page.get_all_product()
 
-        sp_df = sp_page.list_to_df(products, f'./files/woman_clothes_shopee_{today}.csv')
+        sp_df = sp_page.list_to_df(products)
+        sp_page.df_to_csv(sp_df, f'./files/woman_clothes_shopee_{today}.csv')
 
-        gg_drive.upload_csv(sp_df, f'/man_clothes_shopee_{today}.csv')
+        gg_drive.upload_df(sp_df, f'woman_clothes_shopee_{today}.csv')
 
         browser.close_browser()

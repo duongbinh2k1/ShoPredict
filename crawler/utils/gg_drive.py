@@ -1,7 +1,7 @@
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 import pandas as pd
-from io import StringIO
+from io import BytesIO
 
 
 class GGDrive:
@@ -32,16 +32,20 @@ class GGDrive:
         except Exception as e:
             print(f"Error authenticate gg drive: {str(e)}")
 
-    def upload_csv(self, csv_data, title, folder_name="shopredict"):
+    def upload_df(self, csv_data, title):
         if not self.drive:
             print("Error")
             return
 
         try:
-            csv_content = StringIO()
+            csv_content = BytesIO()
             csv_data.to_csv(csv_content, index=False)
+            csv_content.seek(0)
+
             csv_file = self.drive.CreateFile({'title': title})
+            csv_file.SetContentString(csv_content.getvalue().decode('utf-8'))
             csv_file.Upload()
+
             print(f"Uploaded '{title}' successfully.")
         except Exception as e:
             print(f"Error: {str(e)}")
