@@ -39,7 +39,7 @@ def clean_data(source):
         df['sold_quantity'] = df['sold_quantity'] * 1000
 
         df['get_at'] = datetime.datetime.now()
-        df['gender'] = source.split("_")[0]
+        df['gender'] = source.split("_")[0].replace("files\\", "")
 
         return df
 
