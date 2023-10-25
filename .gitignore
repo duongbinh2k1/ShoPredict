@@ -10,3 +10,10 @@ __pycache__/
 
 client_secret.json
 client_secrets.json
+
+images/
+
+test_csv3.csv
+train_csv3.csv
+
+Vgg16_body_freezed_10_epochs.pth
