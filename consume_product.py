@@ -1,0 +1,3 @@
+from clothes_classifier.consumer import consume_product_queue
+
+consume_product_queue()

@@ -1,0 +1,3 @@
+from process_data.producer import publish_product_to_queue
+
+publish_product_to_queue()

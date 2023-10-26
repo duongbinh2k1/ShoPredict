@@ -1,3 +1,0 @@
-from process_data.producer import publish_image_urls_to_queue
-
-publish_image_urls_to_queue()

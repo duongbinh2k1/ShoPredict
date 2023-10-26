@@ -26,6 +26,15 @@ class MongoDBClient:
         except Exception as e:
             print(f"Error: {e}")
             return None
+        
+    def insert_one(self, collection_name, data):
+        try:
+            collection = self.db[collection_name]
+            result = collection.insert_one(data)
+            return result.inserted_id
+        except Exception as e:
+            print(f"Error: {e}")
+            return None
 
     def close_connection(self):
         self.client.close()
