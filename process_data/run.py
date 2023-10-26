@@ -13,3 +13,9 @@ def clean_and_store_data(file):
     mongo_client.insert_many_df(collection_name, df)
     
     mongo_client.close_connection()
+
+def delete_file(file):
+    try:
+        os.remove(os.path.join('files', file))
+    except Exception as e:
+        print(f'Error: {e}')
