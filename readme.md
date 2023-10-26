@@ -4,6 +4,8 @@ This project utilizes Apache Airflow to automatically crawl data from Shopee, sa
 
 ## Usage Guide
 
+![Diagram](https://github.com/duongbinh2k1/ShoPredict/blob/master/diagram.png?raw=true)
+
 ### Requirements
 
 - Python 3.10.x
