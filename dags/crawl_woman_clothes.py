@@ -15,9 +15,20 @@ default_args = {
 
 dag = DAG('crawl_woman_clothes', default_args=default_args)
 
-crawl_dag = BashOperator(
+
+crawl_woman_dag = BashOperator(
     task_id='crawl_woman_clothes_task',
-    bash_command='python /opt/airflow/crawler/shopee/crawl_woman_clothes.py',
+    bash_command='python /opt/airflow/crawl_woman_data.py',
     dag=dag)
 
-crawl_dag
+publish_dag = BashOperator(
+    task_id='publish_product_task',
+    bash_command='python /opt/airflow/publish_product.py',
+    dag=dag)
+
+consume_dag = BashOperator(
+    task_id='consume_product_task',
+    bash_command='python /opt/airflow/consume_product.py',
+    dag=dag)
+
+crawl_woman_dag >> publish_dag >> consume_dag
