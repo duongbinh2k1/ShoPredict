@@ -310,7 +310,7 @@ services:
 
   mongodb:
     image: mongo
-    container_name: mongodb
+    container_name: mongodb-product
     ports:
       - "27017:27017"
     volumes:
@@ -321,6 +321,15 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
+
+  app:
+    build:
+      context: ./containers/app
+      dockerfile: Dockerfile
+    ports:
+      - "8050:8050"
+    volumes:
+      - ./app:/app
   
 volumes:
   postgres-db-volume:
